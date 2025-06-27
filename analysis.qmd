@@ -1,5 +1,33 @@
 ---
-title: "Untitled"
+title: "A Beautiful Graphic"
+author: Khubaid Ur Rehman
 format: html
+execute:
+ echo: false
+ warning: false
 ---
 
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_smooth(method = "loess", se = FALSE, linewidth = 1) +
+  scale_color_brewer(palette = "Set2") +
+  labs(
+    title = "Engine Displacement vs Highway MPG",
+    subtitle = "Grouped by Vehicle Class",
+    x = "Engine Displacement (liters)",
+    y = "Highway Miles per Gallon",
+    color = "Vehicle Class"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "right"
+  )
+```
